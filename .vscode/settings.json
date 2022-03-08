@@ -1,0 +1,8 @@
+{
+    "css.validate": false,
+    "editor.formatOnSave": true,
+    "editor.quickSuggestions": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    }
+}
