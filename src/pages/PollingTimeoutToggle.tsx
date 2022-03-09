@@ -45,7 +45,7 @@ export const PollingTimeoutToggle = () => {
             clearTimeout(timeout)
             controller.abort()
         }
-    }, [isUpdating])
+    }, [isUpdating]) // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         fetchClockData()
@@ -55,7 +55,7 @@ export const PollingTimeoutToggle = () => {
             console.log("Cleanup Init Fetch")
             controller.abort()
         }
-    }, [])
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <>
