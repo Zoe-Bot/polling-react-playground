@@ -62,7 +62,7 @@ export const PollingTimeoutToggle = () => {
             <h1>Polling Timeout</h1>
             <p>Current Filetime: {currentFileTime}</p>
             {console.log(isUpdating)}
-            <button onClick={() => setIsUpdating(!isUpdating)}>Toggle Live</button>
+            <button onClick={() => setIsUpdating(!isUpdating)}>{isUpdating ? "Live ON" : "Live OFF"}</button>
         </>
     )
 }
