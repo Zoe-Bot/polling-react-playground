@@ -21,7 +21,6 @@ export const PollingWithSetIntervall = () => {
 
                 setCurrentFileTime(response.currentFileTime)
             } catch (error: any) {
-                // Backoff
                 // When Cleanup (Cancel Request) it would throw an abort error so we catch this here
                 if (error.name === 'AbortError') {
                     console.log('Successfully aborted!')
