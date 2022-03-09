@@ -3,6 +3,7 @@ import { PollingTimeoutToggle } from "./pages/PollingTimeoutToggle";
 import { PollingWithRequestAnimationFrame } from "./pages/PollingWithRequestAnimationFrame";
 import { PollingWithSetIntervall } from "./pages/PollingWithSetIntervall";
 import { PollingWithSetTimeout } from "./pages/PollingWithSetTimeout";
+import { UseRefExample } from "./pages/UseRefExample";
 
 function App() {
   return (
@@ -12,11 +13,13 @@ function App() {
         <li><Link to="/toggle">Polling (With Toggle) With Set Timout</Link></li>
         <li><Link to="/request-animation">Polling With Request Animation Frame</Link></li>
         <li><Link to="/interval">Polling With Set Intervall</Link></li>
+        <li><Link to="/useref">Use Ref Example</Link></li>
       </ul>
       <Routes>
         <Route path="/request-animation" element={<PollingWithRequestAnimationFrame />} />
         <Route path="/interval" element={<PollingWithSetIntervall />} />
         <Route path="/toggle" element={<PollingTimeoutToggle />} />
+        <Route path="/useref" element={<UseRefExample />} />
         <Route path="/" element={<PollingWithSetTimeout />} />
       </Routes>
     </div>
