@@ -1,23 +1,34 @@
 import { useEffect, useState } from "react"
 
 export const PollingWithSetTimeout = () => {
-    const [data, setData] = useState<any>()
+    const INTERVALL = 3000
+    const [currentFileTime, setCurrentFileTime] = useState<number>()
+    let timeout: NodeJS.Timeout
 
-    const fetchData = async () => {
-        const res = await fetch('http://worldclockapi.com/api/json/est/now')
-        const response = await res.json()
+    const fetchClockData = async (timeout: NodeJS.Timeout | number) => {
+        try {
+            const res = await fetch('http://worldclockapi.com/api/json/est/now')
+            const response = await res.json()
 
-        setData(response)
+            setCurrentFileTime(response.currentFileTime)
+
+            timeout = setTimeout(fetchClockData, INTERVALL)
+        } catch (error) {
+            // Backoff
+            console.error('Error while fetching worldclockapi', error)
+        }
     }
 
     useEffect(() => {
-        fetchData()
+        fetchClockData(timeout)
+
+        return () => clearTimeout(timeout)
     }, [])
 
     return (
         <>
             <h1>Polling Timeout</h1>
-            <p>{data && data.currentFileTime}</p>
+            <p>Current Filetime: {currentFileTime}</p>
         </>
     )
 }
